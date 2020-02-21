@@ -9,7 +9,25 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/publish')
+      },
+      {
+        path: '/content',
+        component: () => import('@/views/content')
+      },
+      {
+        path: '/comment',
+        component: () => import('@/views/comment')
+      },
+      {
+        path: '/material',
+        component: () => import('@/views/material')
+      }
+    ]
   },
   {
     path: '/login',
