@@ -60,14 +60,15 @@ export default {
             method: 'POST',
             data: this.myForm
           }).then(result => {
-            window.localStorage.setItem('user-token', result.data.data.token)
+            window.localStorage.setItem('user-token', result.data.token)
             this.$router.push('/')
-          }).catch(() => {
-            this.$message({
-              type: 'warning',
-              message: '手机号或密码错误'
-            })
           })
+          // .catch(() => {
+          //   this.$message({
+          //     type: 'warning',
+          //     message: '手机号或密码错误'
+          //   })
+          // })
         }
       })
     }

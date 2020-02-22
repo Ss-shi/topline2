@@ -36,12 +36,12 @@ export default {
     getInfo () {
       this.$axios({
         url: '/user/profile',
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${window.localStorage.getItem('user-token')}`
-        }
+        method: 'GET'
+        // headers: {
+        //   Authorization: `Bearer ${window.localStorage.getItem('user-token')}`
+        // }
       }).then(res => {
-        this.profile = res.data.data
+        this.profile = res.data
       })
     },
     handleCommand (command) {
