@@ -49,7 +49,7 @@ export default {
         window.localStorage.removeItem('user-token')
         this.$router.push('/login')
       } else if (command === 'git') {
-        window.localStorage.herf = ''
+        window.localStorage.herf = 'https://github.com/Ss-shi/topline2'
       }
     }
   },
