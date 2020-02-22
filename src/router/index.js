@@ -8,23 +8,31 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    redirect: '/home'
+  },
+  {
+    path: '/home',
     name: 'Home',
     component: Home,
     children: [
       {
         path: '',
+        component: () => import('@/views/Home/home')
+      },
+      {
+        path: 'publish',
         component: () => import('@/views/publish')
       },
       {
-        path: '/content',
-        component: () => import('@/views/content')
+        path: 'content',
+        component: () => import('../views/content')
       },
       {
-        path: '/comment',
+        path: 'comment',
         component: () => import('@/views/comment')
       },
       {
-        path: '/material',
+        path: 'material',
         component: () => import('@/views/material')
       }
     ]

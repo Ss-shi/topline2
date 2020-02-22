@@ -5,13 +5,11 @@
     </div>
     <el-menu
       router
-      default-active="1"
-      class="el-menu-vertical-demo"
       background-color="#353b4e"
       text-color=" #adafb5"
       active-text-color="#ffd04b"
     >
-      <el-menu-item>
+      <el-menu-item index='/home'>
         <i class="el-icon-menu"></i>
         <span slot="title">首页</span>
       </el-menu-item>

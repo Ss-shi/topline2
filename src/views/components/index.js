@@ -1,6 +1,6 @@
-import breadCrumb from './common/bread-crumb'
+import BreadCrumb from './common/bread-crumb'
 export default ({
-  install (vue) {
-    vue.component(breadCrumb)
+  install (Vue) {
+    Vue.component('bread-crumb', BreadCrumb)
   }
 })
