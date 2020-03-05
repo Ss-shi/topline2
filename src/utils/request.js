@@ -1,6 +1,7 @@
 
 import axios from 'axios'
 import { Message } from 'element-ui'
+import JSONBig from 'json-bigint'
 
 axios.interceptors.request.use(function (config) {
   const token = window.localStorage.getItem('user-token')
@@ -9,7 +10,9 @@ axios.interceptors.request.use(function (config) {
 }, function (error) {
   return Promise.reject(error)
 })
-
+axios.defaults.transformResponse = [function (data) {
+  return JSONBig.parse(data)
+}]
 axios.interceptors.response.use(function (response) {
   return response.data ? response.data : {}
 }, function (error) {
@@ -25,6 +28,7 @@ axios.interceptors.response.use(function (response) {
       break
   }
   Message({ message })
+  return Promise.reject(error)
 })
 
 export default axios

@@ -49,6 +49,8 @@ export default {
 
 <style lang='less' scoped>
 .leftAside {
+  position: fixed;
+  width:200px;
   height: 100vh;
   background-color: #323745;
   .el-menu {
