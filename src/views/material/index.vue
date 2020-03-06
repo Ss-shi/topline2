@@ -15,8 +15,8 @@
           <el-card class='img-card' v-for="item in materialList" :key='item.id'>
             <img  :src="item.url" alt="">
             <el-row class='operate' type='flex' align="middle" justify="space-around" >
-                <i class='el-icon-star-on'></i>
-                <i class='el-icon-delete-solid'></i>
+                <i class='el-icon-star-on' :style="{color:item.is_collected?'red':''}" @click='clickCollcet(item)'></i>
+                <i class='el-icon-delete-solid' @click='delMaterial(item.id)'></i>
             </el-row>
           </el-card>
         </div>
@@ -54,6 +54,29 @@ export default {
     }
   },
   methods: {
+    delMaterial (id) {
+      this.$confirm('你确定要删除此素材吗').then(() => {
+        this.loading = true
+        this.$axios({
+          url: `/user/images/${id}`,
+          method: 'DELETE'
+        }).then(() => {
+          this.getMaterialList()
+          this.loading = false
+        })
+      })
+    },
+    clickCollcet (row) {
+      this.$axios({
+        url: `/user/images/${row.id}`,
+        method: 'PUT',
+        data: {
+          collect: !row.is_collected
+        }
+      }).then(() => {
+        this.getMaterialList()
+      })
+    },
     uploadImg (params) {
       this.loading = true
       const imgForm = new FormData()
@@ -118,6 +141,9 @@ export default {
       width: 100%;
       height: 30px;
       background-color: #f4f5f6;
+      i{
+        cursor: pointer;
+      }
     }
   }
 }
